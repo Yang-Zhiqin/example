@@ -9,10 +9,7 @@ import java.util.*;
 public class TimesCount {
 
     //异常上限
-    private int exceTimes=1;
-
-    //参数个数
-    private int paramNumber=2;
+    private int exceTimes=3;
 
     //临时日志记录
     private ArrayList<Map<Integer,String>> tempLogs;
@@ -65,8 +62,8 @@ public class TimesCount {
                 //日志归类:每个id每天一条记录，记录的val为统计次数
                 for (Map<Integer, String> logMap : tempLogs) {
                     for (Map.Entry<Integer, String> log : logMap.entrySet()) {
-                        Integer countNum = countlogs.get(log.getKey());
                         String keyStr = log.getKey() +"$"+ sdfNew.format(sdfOld.parse(log.getValue()));
+                        Integer countNum = countlogs.get(keyStr);
                         if (null == countNum || countNum == 0) {
                             countlogs.put(keyStr,1);
                         }else{
